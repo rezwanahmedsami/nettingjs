@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
+    name: Build, lint, and test on Node ${{ matrix.node-version }} and ${{ matrix.os }}
 
     runs-on: [ubuntu-latest, windows-latest, macOS-latest]
 
@@ -31,7 +31,7 @@ jobs:
         cache: 'npm'
         
     - name: Install deps and build (with cache)
-      run: npm i
+      run: npm i --force
       
     - name: Lint
       run: npm run lint
