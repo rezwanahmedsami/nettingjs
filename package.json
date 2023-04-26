@@ -61,5 +61,8 @@
   "lint-staged": {
     "**/*": "npx prettier --write --ignore-unknown"
   },
-  "unpkg": "dist/netting.min.js"
+  "unpkg": "dist/netting.min.js",
+  "dependencies": {
+    "brain.js": "^2.0.0-beta.23"
+  }
 }
