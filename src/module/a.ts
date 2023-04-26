@@ -1,5 +1,5 @@
-function a(){
-    console.log("a");
+function a() {
+  console.log('a');
 }
 
 export default a;

@@ -10,15 +10,15 @@ export default {
       file: 'dist/netting.js',
       format: 'umd',
       exports: 'auto',
-      name: 'Netting'
+      name: 'Netting',
     },
     {
-        file: 'dist/netting.min.js',
-        format: 'umd',
-        name: 'Netting',
-        exports: 'auto',
-        plugins: [terser()],
-      },
+      file: 'dist/netting.min.js',
+      format: 'umd',
+      name: 'Netting',
+      exports: 'auto',
+      plugins: [terser()],
+    },
     {
       file: 'dist/index.js',
       format: 'esm',
