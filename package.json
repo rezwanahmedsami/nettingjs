@@ -10,7 +10,7 @@
     "dist": "npm run build",
     "clean": "del ./dist",
     "prepare": "husky install",
-    "watch:node": "rollup -c rollup.config.js -w",
+    "watch": "rollup -c rollup.config.js -w",
     "lint": "eslint --fix --ext .js,.ts src"
   },
   "repository": {
@@ -42,6 +42,7 @@
   ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@types/jest": "^29.5.1",
     "@types/prettier": "^2.7.2",

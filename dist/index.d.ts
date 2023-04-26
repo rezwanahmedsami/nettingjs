@@ -1,7 +1,5 @@
-import a from './module/a';
-declare function main(): void;
+import { ExitIntent } from './ExitIntent/ExitIntent';
 declare const _default: {
-    main: typeof main;
-    a: typeof a;
+    ExitIntent: typeof ExitIntent;
 };
 export default _default;

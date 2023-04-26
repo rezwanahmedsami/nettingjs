@@ -1,6 +1,3 @@
-import a from './module/a';
-function main() {
-  console.log('yes working');
-}
+import { ExitIntent } from './ExitIntent/ExitIntent';
 
-export default { main, a };
+export default { ExitIntent };
