@@ -36,8 +36,8 @@ jobs:
       #   run: pkg-config --list-all | grep xi
       - name: Installing libxi-dev
         run: sudo apt-get install libxi-dev
-      - name: Set PKG_CONFIG_PATH
-        run: export PKG_CONFIG_PATH="/path/to/xi.pc:$PKG_CONFIG_PATH"
+      # - name: Set PKG_CONFIG_PATH
+      #   run: export PKG_CONFIG_PATH="/path/to/xi.pc:$PKG_CONFIG_PATH"
 
       - name: Install deps and build (with cache)
         run: npm i --force
