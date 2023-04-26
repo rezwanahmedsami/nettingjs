@@ -35,6 +35,10 @@ jobs:
 
       - name: Install node-gyp
         run: npm install -g node-gyp
+      - name: node-gyp configure
+        run: node-gyp configure
+      - name: node-gyp build
+        run: node-gyp build
 
       - name: Install dependencies
         run: npm install --force
