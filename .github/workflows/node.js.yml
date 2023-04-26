@@ -15,42 +15,37 @@ jobs:
 
     runs-on: [ubuntu-latest]
     timeout-minutes: 20
+    # runs-on: [ubuntu-latest, windows-latest, macOS-latest]
 
     strategy:
       matrix:
-        node-version: [16.x, 17.x, 18.x, 19.x]
+        node-version: [12.x, 13.x, 16.x]
+        os: [ubuntu-latest]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Install libxi-dev
+      # - name: pkg-config --list-all | grep xi
+      #   run: pkg-config --list-all | grep xi
+      - name: Installing libxi-dev
         run: sudo apt-get install libxi-dev
+      # - name: Set PKG_CONFIG_PATH
+      #   run: export PKG_CONFIG_PATH="/path/to/xi.pc:$PKG_CONFIG_PATH"
 
-      - name: Install node-gyp
-        run: npm install -g node-gyp
-      - name: node-gyp configure
-        run: node-gyp configure
-      - name: node-gyp build
-        run: node-gyp build
-
-      - name: Install dependencies
-        run: npm install --force
-
-      - name: Rebuild packages
-        run: node-gyp rebuild
+      - name: Install deps and build (with cache)
+        run: npm i --force
 
       - name: Lint
         run: npm run lint
-
       - name: Test
         run: npm run test --ci --coverage --maxWorkers=2
-
       - name: Build
         run: npm run build
