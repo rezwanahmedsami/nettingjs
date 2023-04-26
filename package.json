@@ -1,0 +1,33 @@
+{
+  "name": "nettingjs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A neural network based web tracker library.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezwanahmodsami/nettingjs.git"
+  },
+  "keywords": [
+    "nettingjs",
+    "netting.js",
+    "netting"
+  ],
+  "author": "Rezwan ahmed sami",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rezwanahmodsami/nettingjs/issues"
+  },
+  "homepage": "https://github.com/rezwanahmodsami/nettingjs#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "rollup": "^3.21.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^5.0.4"
+  }
+}
