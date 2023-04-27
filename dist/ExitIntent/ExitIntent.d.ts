@@ -1,4 +1,6 @@
-export declare class ExitIntent {
+import WindowEvents from '../utils/windowEvents';
+export declare class ExitIntent extends WindowEvents {
     constructor();
-    test(): void;
+    mouseEnter(): void;
+    mouseLeave(): void;
 }
