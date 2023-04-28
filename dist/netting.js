@@ -1,3 +1,27 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2023 Rezwan Ahmed Sami
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -58,23 +82,80 @@
         return WindowEvents;
     }());
 
+    var HtmlDOM = document === null || document === void 0 ? void 0 : document.querySelector('html');
+
     var ExitIntent = /** @class */ (function (_super) {
         __extends(ExitIntent, _super);
-        function ExitIntent() {
-            var _this = this;
-            var _a, _b;
-            _this = _super.call(this) || this;
+        function ExitIntent(config) {
+            var _this = _super.call(this) || this;
+            _this.Timer = null;
+            _this.Interval = null;
+            _this.TimeSec = 0;
+            _this.MaxTime = config.MaxTime | 0;
+            _this.ActivityState = {
+                mouse: {
+                    x: 0,
+                    y: 0,
+                },
+                scrollPosition: 0,
+                isInteracted: false,
+                session: 0,
+                window: {
+                    innerHeight: 0,
+                    innerWidth: 0,
+                    outerHeight: 0,
+                    outerWidth: 0,
+                },
+            };
             console.log('yes exitintent class loaded');
-            // mouse leave listener
-            (_a = document === null || document === void 0 ? void 0 : document.querySelector('html')) === null || _a === void 0 ? void 0 : _a.addEventListener('mouseenter', _this.mouseEnter.bind(_this));
-            (_b = document === null || document === void 0 ? void 0 : document.querySelector('html')) === null || _b === void 0 ? void 0 : _b.addEventListener('mouseleave', _this.mouseLeave.bind(_this));
+            // mouseenter listener
+            HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mouseenter', _this.mouseEnter.bind(_this));
+            // mouseleave listener
+            HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mouseleave', _this.mouseLeave.bind(_this));
+            // start mouse move tracker
+            _this.startMouseMoveTracker();
             return _this;
         }
+        ExitIntent.prototype.startMouseMoveTracker = function () {
+            var _this = this;
+            HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mousemove', this.MouseMoveTracker.bind(this));
+            this.Timer = setTimeout(this.stopMouseMoveTracker.bind(this), this.MaxTime * 1000);
+            this.Interval = setInterval(function () {
+                _this.TimeSec++;
+                console.log('time: ', _this.TimeSec);
+            }, 980);
+        };
+        ExitIntent.prototype.stopMouseMoveTracker = function () {
+            console.log('stoping');
+            document.removeEventListener('mousemove', this.MouseMoveTracker);
+            clearTimeout(this.Timer);
+            clearTimeout(this.Interval);
+            if (this.TimeSec == this.MaxTime) {
+                this.TimeSec = 0;
+                console.log(this.ActivityState);
+            }
+            console.log('Mouse move event stopped');
+        };
+        ExitIntent.prototype.MouseMoveTracker = function (event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            var mouse = { x: x, y: y };
+            var scrollPosition = this.getScrollPosition();
+            this.ActivityState.mouse = mouse;
+            this.ActivityState.scrollPosition = scrollPosition;
+            HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mousedown', this.updateActivityStateIsInterect.bind(this));
+            this.ActivityState.window = this.getWindowDimensions();
+            console.log('mouse move tracker');
+        };
+        ExitIntent.prototype.updateActivityStateIsInterect = function () {
+            this.ActivityState.isInteracted = true;
+        };
         ExitIntent.prototype.mouseEnter = function () {
-            console.log(this.getScrollPosition());
+            console.log('Scroll position', this.getScrollPosition());
         };
         ExitIntent.prototype.mouseLeave = function () {
             console.log('Mouse left');
+            this.ActivityState.session = this.TimeSec;
         };
         return ExitIntent;
     }(WindowEvents));
