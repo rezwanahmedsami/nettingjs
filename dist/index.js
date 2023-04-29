@@ -134,6 +134,8 @@ var ExitIntent = /** @class */ (function (_super) {
                 outerHeight: 0,
                 outerWidth: 0,
             },
+            os: getOs(),
+            browserName: getBrowserName()
         };
         console.log('yes exitintent class loaded');
         // mouseenter listener

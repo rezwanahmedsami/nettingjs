@@ -1,8 +1,8 @@
-export function getOs(): string | null | undefined {
+export function getOs(): string {
   return navigator?.platform;
 }
 
-export function getUserAgent(): string | null | undefined {
+export function getUserAgent(): string {
   return navigator?.userAgent;
 }
 

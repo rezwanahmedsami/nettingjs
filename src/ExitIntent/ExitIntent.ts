@@ -16,6 +16,8 @@ type ActivityState = {
     outerHeight: number;
     outerWidth: number;
   };
+  os: string;
+  browserName: string;
 };
 type ExitIntentConfiguration = {
   MaxTime: number;
@@ -48,6 +50,8 @@ export class ExitIntent extends WindowEvents {
         outerHeight: 0,
         outerWidth: 0,
       },
+      os: getOs(),
+      browserName: getBrowserName(),
     };
     console.log('yes exitintent class loaded');
 

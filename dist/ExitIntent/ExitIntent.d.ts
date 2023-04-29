@@ -13,6 +13,8 @@ type ActivityState = {
         outerHeight: number;
         outerWidth: number;
     };
+    os: string;
+    browserName: string;
 };
 type ExitIntentConfiguration = {
     MaxTime: number;
