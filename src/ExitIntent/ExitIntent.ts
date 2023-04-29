@@ -1,6 +1,7 @@
 import WindowEvents from '../utils/windowEvents';
 import { HtmlDOM } from '../utils/GlobalVars';
 import { getBrowserName, getOs, getUserAgent } from '../utils/Platform';
+import { browserNameToNumber, osToNumber } from '../utils/dataTransforms';
 
 type ActivityState = {
   mouse: {
@@ -16,8 +17,8 @@ type ActivityState = {
     outerHeight: number;
     outerWidth: number;
   };
-  os: string;
-  browserName: string;
+  os: number;
+  browser: number;
 };
 type ExitIntentConfiguration = {
   MaxTime: number;
@@ -50,8 +51,8 @@ export class ExitIntent extends WindowEvents {
         outerHeight: 0,
         outerWidth: 0,
       },
-      os: getOs(),
-      browserName: getBrowserName(),
+      os: osToNumber(getOs()),
+      browser: browserNameToNumber(getBrowserName()),
     };
     console.log('yes exitintent class loaded');
 
