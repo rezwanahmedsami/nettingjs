@@ -1,5 +1,7 @@
 import WindowEvents from '../utils/windowEvents';
 import { HtmlDOM } from '../utils/GlobalVars';
+import { getBrowserName, getOs, getUserAgent } from '../utils/Platform';
+
 type ActivityState = {
   mouse: {
     x: number;
@@ -104,6 +106,9 @@ export class ExitIntent extends WindowEvents {
 
   private mouseEnter() {
     console.log('Scroll position', this.getScrollPosition());
+    console.log('OS:', getOs());
+    console.log('User agent:', getUserAgent());
+    console.log('Browser name:', getBrowserName());
   }
 
   private mouseLeave() {

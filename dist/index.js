@@ -78,6 +78,40 @@ var WindowEvents = /** @class */ (function () {
 
 var HtmlDOM = document === null || document === void 0 ? void 0 : document.querySelector('html');
 
+function getOs() {
+    return navigator === null || navigator === void 0 ? void 0 : navigator.platform;
+}
+function getUserAgent() {
+    return navigator === null || navigator === void 0 ? void 0 : navigator.userAgent;
+}
+function getBrowserName() {
+    var userAgent = getUserAgent();
+    var browserName;
+    if ((userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('Chrome')) !== -1) {
+        browserName = 'Google Chrome';
+    }
+    else if ((userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('Safari')) !== -1) {
+        browserName = 'Safari';
+    }
+    else if ((userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('Firefox')) !== -1) {
+        browserName = 'Mozilla Firefox';
+    }
+    else if ((userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('Edge')) !== -1) {
+        browserName = 'Microsoft Edge';
+    }
+    else if ((userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('Opera')) !== -1 ||
+        (userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('OPR')) !== -1) {
+        browserName = 'Opera';
+    }
+    else if ((userAgent === null || userAgent === void 0 ? void 0 : userAgent.indexOf('Trident')) !== -1) {
+        browserName = 'Microsoft Internet Explorer';
+    }
+    else {
+        browserName = 'unknown';
+    }
+    return browserName;
+}
+
 var ExitIntent = /** @class */ (function (_super) {
     __extends(ExitIntent, _super);
     function ExitIntent(config) {
@@ -146,6 +180,9 @@ var ExitIntent = /** @class */ (function (_super) {
     };
     ExitIntent.prototype.mouseEnter = function () {
         console.log('Scroll position', this.getScrollPosition());
+        console.log('OS:', getOs());
+        console.log('User agent:', getUserAgent());
+        console.log('Browser name:', getBrowserName());
     };
     ExitIntent.prototype.mouseLeave = function () {
         console.log('Mouse left');
