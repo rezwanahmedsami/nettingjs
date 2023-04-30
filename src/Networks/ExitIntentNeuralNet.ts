@@ -30,7 +30,8 @@ export default class ExitIntentNeuralNet {
     const data = {
       mouseX: ActivityState.mouse.x,
       mouseY: ActivityState.mouse.y,
-      scrollPosition: ActivityState.scrollPosition,
+      scrollHeight: ActivityState.scrollHeight,
+      scrollTop: ActivityState.scrollTop,
       windowInnerHeight: ActivityState.window.innerHeight,
       windowInnerWidth: ActivityState.window.innerWidth,
       windowOuterHeight: ActivityState.window.outerHeight,
@@ -48,7 +49,11 @@ export default class ExitIntentNeuralNet {
       mouseY: parseFloat(
         (data.mouseY / ActivityState.window.innerHeight).toFixed(2)
       ),
-      scrollPosition: data.scrollPosition,
+      scrollRate: parseFloat(
+        ((data.scrollTop + data.windowInnerHeight) / data.scrollHeight).toFixed(
+          2
+        )
+      ),
       windowInnerHeight: parseFloat(
         (data.windowInnerHeight / data.windowOuterHeight).toFixed(2)
       ),
@@ -69,6 +74,7 @@ export default class ExitIntentNeuralNet {
     return this.Net.run([
       NetInput.mouseX,
       NetInput.mouseY,
+      NetInput.scrollRate,
       NetInput.windowInnerHeight,
       NetInput.windowInnerWidth,
       NetInput.os,

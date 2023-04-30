@@ -5,11 +5,11 @@ type WindowDimensionsObject = {
   outerWidth: number;
 };
 
-type ScrollPosition = number;
+type ScrollTopPosition = number;
 
 interface WindowContext {
   getWindowDimensions: () => WindowDimensionsObject;
-  getScrollPosition: () => ScrollPosition;
+  getScrollTopPosition: () => ScrollTopPosition;
 }
 
 export default class WindowEvents implements WindowContext {
@@ -30,7 +30,7 @@ export default class WindowEvents implements WindowContext {
     };
   }
 
-  public getScrollPosition() {
+  public getScrollTopPosition() {
     const scrollTop: number = window?.scrollY || window?.pageYOffset;
     return scrollTop;
   }

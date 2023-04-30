@@ -4,10 +4,10 @@ type WindowDimensionsObject = {
     outerHeight: number;
     outerWidth: number;
 };
-type ScrollPosition = number;
+type ScrollTopPosition = number;
 interface WindowContext {
     getWindowDimensions: () => WindowDimensionsObject;
-    getScrollPosition: () => ScrollPosition;
+    getScrollTopPosition: () => ScrollTopPosition;
 }
 export default class WindowEvents implements WindowContext {
     constructor();
@@ -17,6 +17,6 @@ export default class WindowEvents implements WindowContext {
         outerHeight: number;
         outerWidth: number;
     };
-    getScrollPosition(): number;
+    getScrollTopPosition(): number;
 }
 export {};

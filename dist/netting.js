@@ -75,7 +75,7 @@
                 outerWidth: outerWindowWidth,
             };
         };
-        WindowEvents.prototype.getScrollPosition = function () {
+        WindowEvents.prototype.getScrollTopPosition = function () {
             var scrollTop = (window === null || window === void 0 ? void 0 : window.scrollY) || (window === null || window === void 0 ? void 0 : window.pageYOffset);
             return scrollTop;
         };
@@ -38745,7 +38745,7 @@ ${innerFunctionsSwitch.join('\n')}
 
     var type = "NeuralNetwork";
     var sizes = [
-    	8,
+    	9,
     	8,
     	8,
     	1
@@ -38760,206 +38760,214 @@ ${innerFunctionsSwitch.join('\n')}
     	{
     		weights: [
     			[
-    				14.424324035644531,
-    				-4.863084316253662,
-    				-3.720244884490967,
-    				-3.121046304702759,
-    				-0.5228677988052368,
-    				-0.37845250964164734,
-    				2.1021010875701904,
-    				-6.1234283447265625
+    				-0.5805860161781311,
+    				5.017387866973877,
+    				-0.1764167696237564,
+    				0.07473227381706238,
+    				-0.2108432948589325,
+    				0.1768237054347992,
+    				0.12755948305130005,
+    				-0.05496425926685333,
+    				2.8589093685150146
     			],
     			[
-    				0.4699368178844452,
-    				0.13589005172252655,
-    				1.0800570249557495,
-    				0.9136570692062378,
-    				0.10704155266284943,
-    				0.324215829372406,
-    				-2.9804248809814453,
-    				0.6187418699264526
+    				0.10922928899526596,
+    				8.80282974243164,
+    				0.015690496191382408,
+    				-2.980473279953003,
+    				-2.4038193225860596,
+    				-0.45186305046081543,
+    				-0.20072409510612488,
+    				0.9908873438835144,
+    				1.204824686050415
     			],
     			[
-    				2.78200626373291,
-    				14.072192192077637,
-    				-6.687157154083252,
-    				-5.490152359008789,
-    				-0.9743879437446594,
-    				-0.8678038716316223,
-    				2.3879096508026123,
-    				-4.3896307945251465
+    				-3.538975715637207,
+    				9.109479904174805,
+    				0.0005413693725131452,
+    				-1.40816330909729,
+    				-1.207568645477295,
+    				-0.29188570380210876,
+    				-0.20357631146907806,
+    				-0.5645191669464111,
+    				5.712104320526123
     			],
     			[
-    				-21.53697395324707,
-    				5.138967514038086,
-    				6.021627902984619,
-    				4.8413519859313965,
-    				0.7165340185165405,
-    				0.6636797189712524,
-    				-3.3418362140655518,
-    				9.514814376831055
+    				1.1237213611602783,
+    				-6.774521350860596,
+    				-0.1270352154970169,
+    				1.4966142177581787,
+    				1.000981330871582,
+    				0.05987690016627312,
+    				0.1412973552942276,
+    				-0.2853659987449646,
+    				-1.664673924446106
     			],
     			[
-    				6.179769039154053,
-    				-8.919657707214355,
-    				1.8467191457748413,
-    				1.8077532052993774,
-    				0.17704451084136963,
-    				0.04183807596564293,
-    				-0.3532309830188751,
-    				-6.606269359588623
+    				3.2515666484832764,
+    				-9.0995454788208,
+    				0.11586955189704895,
+    				1.2639718055725098,
+    				0.7770598530769348,
+    				0.2313399612903595,
+    				0.3274320363998413,
+    				-0.19636724889278412,
+    				-5.343695640563965
     			],
     			[
-    				-15.586845397949219,
-    				9.335222244262695,
-    				-1.3074535131454468,
-    				-1.104077696800232,
-    				-0.34927743673324585,
-    				-0.13929884135723114,
-    				0.18956410884857178,
-    				4.997300148010254
+    				0.39654406905174255,
+    				0.5716906785964966,
+    				0.003535553114488721,
+    				2.2821457386016846,
+    				1.5971155166625977,
+    				0.23606662452220917,
+    				0.3999563753604889,
+    				-4.356850624084473,
+    				1.061210036277771
     			],
     			[
-    				0.47490379214286804,
-    				0.27553582191467285,
-    				1.3841865062713623,
-    				1.1329901218414307,
-    				0.22439227998256683,
-    				0.2960417866706848,
-    				-3.28471040725708,
-    				0.524117112159729
+    				-6.523271083831787,
+    				1.283495306968689,
+    				0.10141195356845856,
+    				2.5502889156341553,
+    				2.0998620986938477,
+    				0.33211779594421387,
+    				0.17265532910823822,
+    				-1.3889985084533691,
+    				6.075707912445068
     			],
     			[
-    				0.4091625511646271,
-    				0.3185339570045471,
-    				0.9036054015159607,
-    				0.7052562832832336,
-    				-0.04139367863535881,
-    				0.014005044475197792,
-    				-2.6972601413726807,
-    				0.4420918822288513
+    				-3.8635902404785156,
+    				6.674306392669678,
+    				0.06007017195224762,
+    				1.06000816822052,
+    				0.6668609380722046,
+    				0.23981444537639618,
+    				-0.06074615940451622,
+    				-0.7838886380195618,
+    				5.191156387329102
     			]
     		],
     		biases: [
-    			-4.001499176025391,
-    			1.4618769884109497,
-    			-6.9174418449401855,
-    			6.517716407775879,
-    			2.0483579635620117,
-    			-1.522051215171814,
-    			1.606042504310608,
-    			1.241397500038147
+    			0.02199690230190754,
+    			-3.1606767177581787,
+    			-1.2496095895767212,
+    			1.3897920846939087,
+    			1.2982988357543945,
+    			2.078899621963501,
+    			2.4712038040161133,
+    			1.097669005393982
     		]
     	},
     	{
     		weights: [
     			[
-    				-0.9000207781791687,
-    				-0.3928113877773285,
-    				-0.845009446144104,
-    				-0.6220624446868896,
-    				0.06543102115392685,
-    				-1.4274210929870605,
-    				-0.35088053345680237,
-    				-0.27821287512779236
+    				-1.2513099908828735,
+    				-1.4699026346206665,
+    				-3.1703531742095947,
+    				0.44881749153137207,
+    				2.5477871894836426,
+    				-2.8477425575256348,
+    				-1.576593041419983,
+    				-1.365936279296875
     			],
     			[
-    				-2.875762462615967,
-    				1.0917456150054932,
-    				-0.034241706132888794,
-    				3.2662127017974854,
-    				-1.8857883214950562,
-    				-0.2760172188282013,
-    				1.2039463520050049,
-    				0.7298510670661926
+    				-1.1530859470367432,
+    				-1.4022225141525269,
+    				-2.7377312183380127,
+    				0.36321789026260376,
+    				2.2026312351226807,
+    				-2.4451980590820312,
+    				-1.5456268787384033,
+    				-1.2963120937347412
     			],
     			[
-    				-0.28326186537742615,
-    				-1.1033577919006348,
-    				-1.8156898021697998,
-    				-1.5716077089309692,
-    				2.6994941234588623,
-    				-2.7148637771606445,
-    				-1.176451325416565,
-    				-0.9782485365867615
+    				-0.4989387094974518,
+    				-0.8816855549812317,
+    				-1.1730003356933594,
+    				-0.06587208062410355,
+    				0.22089868783950806,
+    				-1.0524678230285645,
+    				-0.912968099117279,
+    				-0.7945062518119812
     			],
     			[
-    				-0.4010520875453949,
-    				-1.7373324632644653,
-    				-2.249971628189087,
-    				-1.6612493991851807,
-    				4.754055023193359,
-    				-4.252214431762695,
-    				-1.9029580354690552,
-    				-1.5021378993988037
+    				-0.6784740686416626,
+    				-1.0617125034332275,
+    				-1.3742107152938843,
+    				0.247501939535141,
+    				0.6530183553695679,
+    				-1.2773330211639404,
+    				-1.212886095046997,
+    				-0.9300983548164368
     			],
     			[
-    				-2.070401906967163,
-    				0.6879645586013794,
-    				-0.06420642137527466,
-    				1.2663360834121704,
-    				-0.9732531905174255,
-    				-0.6752721667289734,
-    				0.616089403629303,
-    				0.6877449154853821
+    				-0.30978336930274963,
+    				-0.6961399912834167,
+    				-0.6480393409729004,
+    				-0.49491801857948303,
+    				-0.16108237206935883,
+    				0.06602979451417923,
+    				-0.27333247661590576,
+    				-0.47229644656181335
     			],
     			[
-    				-0.32078981399536133,
-    				-1.535858154296875,
-    				-2.134525775909424,
-    				-1.587449550628662,
-    				4.648497581481934,
-    				-3.9800682067871094,
-    				-1.7980461120605469,
-    				-1.252084493637085
+    				-0.8319990038871765,
+    				-1.1723988056182861,
+    				-2.2907798290252686,
+    				0.35347655415534973,
+    				1.5772449970245361,
+    				-2.292555809020996,
+    				-1.120286464691162,
+    				-1.1077357530593872
     			],
     			[
-    				-3.4077467918395996,
-    				1.9444334506988525,
-    				8.347968101501465,
-    				4.636561870574951,
-    				-4.803971290588379,
-    				-1.6565927267074585,
-    				2.33235239982605,
-    				1.7771393060684204
+    				0.6994000673294067,
+    				-0.9131363034248352,
+    				-0.812994122505188,
+    				-0.37870025634765625,
+    				-1.0440648794174194,
+    				1.8154125213623047,
+    				1.8519887924194336,
+    				1.3136143684387207
     			],
     			[
-    				-1.6555736064910889,
-    				0.3320256173610687,
-    				-0.32355809211730957,
-    				0.5804480910301208,
-    				-0.8094589114189148,
-    				-0.8173180818557739,
-    				0.31408798694610596,
-    				0.30322131514549255
+    				0.9612460732460022,
+    				2.589724540710449,
+    				1.0778249502182007,
+    				-1.5961904525756836,
+    				-2.28080677986145,
+    				3.4596121311187744,
+    				2.0904135704040527,
+    				1.1907265186309814
     			]
     		],
     		biases: [
-    			-1.3256523609161377,
-    			-1.271032691001892,
-    			-1.1529335975646973,
-    			-0.9472168684005737,
-    			-1.2738282680511475,
-    			-1.0873371362686157,
-    			-1.4226088523864746,
-    			-1.2487571239471436
+    			0.19622863829135895,
+    			0.17000772058963776,
+    			-0.38636514544487,
+    			-0.26073306798934937,
+    			-0.8076282739639282,
+    			-0.03950750082731247,
+    			-1.7080756425857544,
+    			-1.7464990615844727
     		]
     	},
     	{
     		weights: [
     			[
-    				0.3325204849243164,
-    				-2.6203668117523193,
-    				1.9123066663742065,
-    				5.268004417419434,
-    				-0.9514658451080322,
-    				4.807149887084961,
-    				-8.089437484741211,
-    				-0.39057937264442444
+    				4.296163082122803,
+    				3.5970864295959473,
+    				1.195551872253418,
+    				1.6109334230422974,
+    				0.3737014830112457,
+    				2.758774518966675,
+    				-2.3930935859680176,
+    				-3.328232765197754
     			]
     		],
     		biases: [
-    			-0.01450442336499691
+    			-1.3082937002182007
     		]
     	}
     ];
@@ -39021,7 +39029,8 @@ ${innerFunctionsSwitch.join('\n')}
             var data = {
                 mouseX: ActivityState.mouse.x,
                 mouseY: ActivityState.mouse.y,
-                scrollPosition: ActivityState.scrollPosition,
+                scrollHeight: ActivityState.scrollHeight,
+                scrollTop: ActivityState.scrollTop,
                 windowInnerHeight: ActivityState.window.innerHeight,
                 windowInnerWidth: ActivityState.window.innerWidth,
                 windowOuterHeight: ActivityState.window.outerHeight,
@@ -39034,7 +39043,7 @@ ${innerFunctionsSwitch.join('\n')}
             var normalizedData = {
                 mouseX: parseFloat((data.mouseX / ActivityState.window.innerWidth).toFixed(2)),
                 mouseY: parseFloat((data.mouseY / ActivityState.window.innerHeight).toFixed(2)),
-                scrollPosition: data.scrollPosition,
+                scrollRate: parseFloat(((data.scrollTop + data.windowInnerHeight) / data.scrollHeight).toFixed(2)),
                 windowInnerHeight: parseFloat((data.windowInnerHeight / data.windowOuterHeight).toFixed(2)),
                 windowInnerWidth: parseFloat((data.windowInnerWidth / data.windowOuterWidth).toFixed(2)),
                 os: data.os,
@@ -39049,6 +39058,7 @@ ${innerFunctionsSwitch.join('\n')}
             return this.Net.run([
                 NetInput.mouseX,
                 NetInput.mouseY,
+                NetInput.scrollRate,
                 NetInput.windowInnerHeight,
                 NetInput.windowInnerWidth,
                 NetInput.os,
@@ -39068,12 +39078,17 @@ ${innerFunctionsSwitch.join('\n')}
             _this.Interval = null;
             _this.TimeSec = 0;
             _this.MaxTime = config.MaxTime | 0;
+            _this.isTracking = false;
+            _this.ExitIntentCallbackFunction = function () {
+                //
+            };
             _this.ActivityState = {
                 mouse: {
                     x: 0,
                     y: 0,
                 },
-                scrollPosition: 0,
+                scrollHeight: document.body.scrollHeight,
+                scrollTop: 0,
                 isInteracted: false,
                 sessionTime: 0,
                 window: {
@@ -39086,7 +39101,7 @@ ${innerFunctionsSwitch.join('\n')}
                 browser: browserNameToNumber(getBrowserName()),
             };
             _this.neuralNet = new ExitIntentNeuralNet();
-            console.log('yes exitintent class loaded');
+            // console.log('yes exitintent class loaded');
             // mouseenter listener
             HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mouseenter', _this.mouseEnter.bind(_this));
             // mouseleave listener
@@ -39097,34 +39112,49 @@ ${innerFunctionsSwitch.join('\n')}
         }
         ExitIntent.prototype.startMouseMoveTracker = function () {
             var _this = this;
-            HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mousemove', this.MouseMoveTracker.bind(this));
-            this.Timer = setTimeout(this.stopMouseMoveTracker.bind(this), this.MaxTime * 1000);
-            this.Interval = setInterval(function () {
-                _this.TimeSec++;
-                console.log('time: ', _this.TimeSec);
-            }, 980);
+            if (!this.isTracking) {
+                HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mousemove', this.MouseMoveTracker.bind(this));
+                this.Timer = setTimeout(this.stopMouseMoveTracker.bind(this), this.MaxTime * 1000);
+                this.Interval = setInterval(function () {
+                    _this.TimeSec++;
+                    // console.log('time: ', this.TimeSec);
+                }, 980);
+                this.isTracking = true;
+            }
         };
         ExitIntent.prototype.stopMouseMoveTracker = function () {
-            // console.log('stoping');
-            // HtmlDOM?.removeEventListener('mousemove', this.MouseMoveTracker.bind(this));
-            clearTimeout(this.Timer);
-            clearTimeout(this.Interval);
-            if (this.TimeSec == this.MaxTime) {
-                this.TimeSec = 0;
-                // console.log(this.ActivityState);
+            if (this.isTracking) {
+                clearTimeout(this.Timer);
+                clearTimeout(this.Interval);
+                this.ActivityState.sessionTime = this.TimeSec;
+                if (this.TimeSec == this.MaxTime) {
+                    this.TimeSec = 0;
+                }
+                this.performResultoperations();
+                this.isTracking = false;
             }
-            // console.log('Mouse move event stopped');
+        };
+        ExitIntent.prototype.performResultoperations = function () {
+            var predictionResult = this.neuralNet.predictExitIntent(this.ActivityState)[0];
+            var output = {
+                exitChance: Number.isNaN(predictionResult) ? 0 : predictionResult,
+                sessionTime: this.ActivityState.sessionTime,
+            };
+            this.ExitIntentCallbackFunction(output);
+        };
+        ExitIntent.prototype.setCallBack = function (ExitIntentCallbackFunction) {
+            this.ExitIntentCallbackFunction = ExitIntentCallbackFunction;
         };
         ExitIntent.prototype.MouseMoveTracker = function (event) {
             var x = event.clientX;
             var y = event.clientY;
             var mouse = { x: x, y: y };
-            var scrollPosition = this.getScrollPosition();
+            var ScrollTopPosition = this.getScrollTopPosition();
             this.ActivityState.mouse = mouse;
-            this.ActivityState.scrollPosition = scrollPosition;
+            this.ActivityState.scrollTop = ScrollTopPosition;
             HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mousedown', this.updateActivityStateIsInterect.bind(this));
             this.ActivityState.window = this.getWindowDimensions();
-            console.log('mouse move tracker');
+            // console.log('mouse move tracker');
         };
         ExitIntent.prototype.updateActivityStateIsInterect = function () {
             this.ActivityState.isInteracted = true;
@@ -39136,14 +39166,7 @@ ${innerFunctionsSwitch.join('\n')}
             // console.log('Browser name:', getBrowserName());
         };
         ExitIntent.prototype.mouseLeave = function () {
-            // console.log('Mouse left');
-            this.ActivityState.sessionTime = this.TimeSec;
-            var output = {
-                showExitIntent: this.neuralNet.predictExitIntent(this.ActivityState),
-                sessionTime: this.ActivityState.sessionTime
-            };
-            console.log('output:', output);
-            HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.removeEventListener('mouseleave', this.mouseLeave.bind(this));
+            this.stopMouseMoveTracker();
         };
         return ExitIntent;
     }(WindowEvents));

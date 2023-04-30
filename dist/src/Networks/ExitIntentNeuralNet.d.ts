@@ -7,7 +7,7 @@ export default class ExitIntentNeuralNet {
     genrateNormalizedDataForInput(ActivityState: ActivityState): {
         mouseX: number;
         mouseY: number;
-        scrollPosition: number;
+        scrollRate: number;
         windowInnerHeight: number;
         windowInnerWidth: number;
         os: number;

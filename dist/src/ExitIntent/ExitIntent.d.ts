@@ -4,7 +4,8 @@ export type ActivityState = {
         x: number;
         y: number;
     };
-    scrollPosition: number;
+    scrollHeight: number;
+    scrollTop: number;
     isInteracted: boolean;
     sessionTime: number;
     window: {
@@ -19,16 +20,25 @@ export type ActivityState = {
 type ExitIntentConfiguration = {
     MaxTime: number;
 };
+type ExitIntentCallbackArg = {
+    exitChance: number;
+    sessionTime: number;
+};
+type ExitIntentCallbackFunction = (arg: ExitIntentCallbackArg) => void;
 export declare class ExitIntent extends WindowEvents {
     protected Timer: unknown;
     protected Interval: unknown;
     protected TimeSec: number;
     protected MaxTime: number;
+    private isTracking;
+    private ExitIntentCallbackFunction;
     protected ActivityState: ActivityState;
     private neuralNet;
     constructor(config: ExitIntentConfiguration);
     private startMouseMoveTracker;
     private stopMouseMoveTracker;
+    private performResultoperations;
+    setCallBack(ExitIntentCallbackFunction: ExitIntentCallbackFunction): void;
     private MouseMoveTracker;
     private updateActivityStateIsInterect;
     private mouseEnter;
