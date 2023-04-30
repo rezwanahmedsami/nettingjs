@@ -25,6 +25,7 @@ export declare class ExitIntent extends WindowEvents {
     protected TimeSec: number;
     protected MaxTime: number;
     protected ActivityState: ActivityState;
+    private neuralNet;
     constructor(config: ExitIntentConfiguration);
     private startMouseMoveTracker;
     private stopMouseMoveTracker;

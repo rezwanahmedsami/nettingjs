@@ -1,9 +1,10 @@
 import WindowEvents from '../utils/windowEvents';
 import { HtmlDOM } from '../utils/GlobalVars';
-import { getBrowserName, getOs, getUserAgent } from '../utils/Platform';
+import { getBrowserName, getOs } from '../utils/Platform';
 import { browserNameToNumber, osToNumber } from '../utils/dataTransforms';
+import ExitIntentNeuralNet from '../Networks/ExitIntentNeuralNet';
 
-type ActivityState = {
+export type ActivityState = {
   mouse: {
     x: number;
     y: number;
@@ -29,6 +30,7 @@ export class ExitIntent extends WindowEvents {
   protected TimeSec: number;
   protected MaxTime: number;
   protected ActivityState: ActivityState;
+  private neuralNet: ExitIntentNeuralNet;
 
   constructor(config: ExitIntentConfiguration) {
     super();
@@ -54,6 +56,7 @@ export class ExitIntent extends WindowEvents {
       os: osToNumber(getOs()),
       browser: browserNameToNumber(getBrowserName()),
     };
+    this.neuralNet = new ExitIntentNeuralNet();
     console.log('yes exitintent class loaded');
 
     // mouseenter listener
@@ -79,15 +82,15 @@ export class ExitIntent extends WindowEvents {
   }
 
   private stopMouseMoveTracker() {
-    console.log('stoping');
-    document.removeEventListener('mousemove', this.MouseMoveTracker);
+    // console.log('stoping');
+    // HtmlDOM?.removeEventListener('mousemove', this.MouseMoveTracker.bind(this));
     clearTimeout(this.Timer as number);
     clearTimeout(this.Interval as number);
     if (this.TimeSec == this.MaxTime) {
       this.TimeSec = 0;
-      console.log(this.ActivityState);
+      // console.log(this.ActivityState);
     }
-    console.log('Mouse move event stopped');
+    // console.log('Mouse move event stopped');
   }
 
   private MouseMoveTracker(event: { clientX: number; clientY: number }) {
@@ -110,14 +113,19 @@ export class ExitIntent extends WindowEvents {
   }
 
   private mouseEnter() {
-    console.log('Scroll position', this.getScrollPosition());
-    console.log('OS:', getOs());
-    console.log('User agent:', getUserAgent());
-    console.log('Browser name:', getBrowserName());
+    // console.log('Scroll position', this.getScrollPosition());
+    // console.log('OS:', getOs());
+    // console.log('User agent:', getUserAgent());
+    // console.log('Browser name:', getBrowserName());
   }
 
   private mouseLeave() {
-    console.log('Mouse left');
+    // console.log('Mouse left');
     this.ActivityState.sessionTime = this.TimeSec;
+    const output = {
+      showExitIntent: this.neuralNet.predictExitIntent(this.ActivityState),
+      sessionTime: this.ActivityState.sessionTime,
+    };
+    console.log('output:', output);
   }
 }
