@@ -10,7 +10,7 @@ type ActivityState = {
   };
   scrollPosition: number;
   isInteracted: boolean;
-  session: number;
+  sessionTime: number;
   window: {
     innerHeight: number;
     innerWidth: number;
@@ -44,7 +44,7 @@ export class ExitIntent extends WindowEvents {
       },
       scrollPosition: 0,
       isInteracted: false,
-      session: 0,
+      sessionTime: 0,
       window: {
         innerHeight: 0,
         innerWidth: 0,
@@ -118,6 +118,6 @@ export class ExitIntent extends WindowEvents {
 
   private mouseLeave() {
     console.log('Mouse left');
-    this.ActivityState.session = this.TimeSec;
+    this.ActivityState.sessionTime = this.TimeSec;
   }
 }
