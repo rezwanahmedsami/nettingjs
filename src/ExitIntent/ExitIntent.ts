@@ -79,14 +79,14 @@ export class ExitIntent extends WindowEvents {
     HtmlDOM?.addEventListener('mouseleave', this.mouseLeave.bind(this));
 
     // start mouse move tracker
-    this.startMouseMoveTracker();
+    this.startTracking();
   }
 
-  private startMouseMoveTracker() {
+  private startTracking() {
     if (!this.isTracking) {
       HtmlDOM?.addEventListener('mousemove', this.MouseMoveTracker.bind(this));
       this.Timer = setTimeout(
-        this.stopMouseMoveTracker.bind(this),
+        this.stopTracking.bind(this),
         this.MaxTime * 1000
       );
       this.Interval = setInterval(() => {
@@ -97,7 +97,7 @@ export class ExitIntent extends WindowEvents {
     }
   }
 
-  private stopMouseMoveTracker() {
+  private stopTracking() {
     if (this.isTracking) {
       clearTimeout(this.Timer as number);
       clearTimeout(this.Interval as number);
@@ -154,6 +154,6 @@ export class ExitIntent extends WindowEvents {
   }
 
   private mouseLeave() {
-    this.stopMouseMoveTracker();
+    this.stopTracking();
   }
 }

@@ -1,12 +1,16 @@
 export function osToNumber(os: string) {
   switch (os) {
-    case 'MacIntel':
+    case 'macOS':
       return 0.1;
-    case 'Windows NT':
+    case 'Windows':
       return 0.2;
-    case 'Linux x86_64':
+    case 'Linux':
       return 0.3;
-    // add more cases as needed
+    case 'iOS':
+      return 0.4; // Example: Assign a number for iOS
+    case 'Android':
+      return 0.5; // Example: Assign a number for Android
+    // Add more cases for other mobile operating systems
     default:
       return 0;
   }
@@ -24,7 +28,9 @@ export function browserNameToNumber(browserName: string) {
       return 0.4;
     case 'Opera':
       return 0.5;
-    // add more cases as needed
+    case 'Mobile Safari':
+      return 0.6; // Example: Assign a number for Mobile Safari
+    // Add more cases for other mobile browsers
     default:
       return 0;
   }

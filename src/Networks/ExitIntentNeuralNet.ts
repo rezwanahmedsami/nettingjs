@@ -1,4 +1,4 @@
-import * as brain from 'brain.js';
+import { NeuralNetwork } from 'brain.js';
 import ExitIntentModel from '../../models/exit_intent_trained_model.json';
 import { ActivityState } from '../ExitIntent/ExitIntent';
 type NetConfig = {
@@ -20,7 +20,7 @@ export default class ExitIntentNeuralNet {
       hiddenLayers: [8, 8],
       learningRate: 0.6,
     };
-    this.Net = new brain.NeuralNetwork(this.NetConfig);
+    this.Net = new NeuralNetwork(this.NetConfig);
     this.TrainedModel = ExitIntentModel;
 
     this.Net.fromJSON(this.TrainedModel);

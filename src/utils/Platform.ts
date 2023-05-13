@@ -1,5 +1,19 @@
 export function getOs(): string {
-  return navigator?.platform;
+  const userAgent = navigator?.userAgent || '';
+
+  if (/windows/i.test(userAgent)) {
+    return 'Windows';
+  } else if (/android/i.test(userAgent)) {
+    return 'Android';
+  } else if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+    return 'iOS';
+  } else if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+    return 'macOS';
+  } else if (/Linux/i.test(userAgent)) {
+    return 'Linux';
+  }
+
+  return 'Unknown';
 }
 
 export function getUserAgent(): string {

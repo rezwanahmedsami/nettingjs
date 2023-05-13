@@ -35,8 +35,8 @@ export declare class ExitIntent extends WindowEvents {
     protected ActivityState: ActivityState;
     private neuralNet;
     constructor(config: ExitIntentConfiguration);
-    private startMouseMoveTracker;
-    private stopMouseMoveTracker;
+    private startTracking;
+    private stopTracking;
     private performResultoperations;
     setCallBack(ExitIntentCallbackFunction: ExitIntentCallbackFunction): void;
     private MouseMoveTracker;

@@ -82,7 +82,23 @@ var WindowEvents = /** @class */ (function () {
 var HtmlDOM = document === null || document === void 0 ? void 0 : document.querySelector('html');
 
 function getOs() {
-    return navigator === null || navigator === void 0 ? void 0 : navigator.platform;
+    var userAgent = (navigator === null || navigator === void 0 ? void 0 : navigator.userAgent) || '';
+    if (/windows/i.test(userAgent)) {
+        return 'Windows';
+    }
+    else if (/android/i.test(userAgent)) {
+        return 'Android';
+    }
+    else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'iOS';
+    }
+    else if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+        return 'macOS';
+    }
+    else if (/Linux/i.test(userAgent)) {
+        return 'Linux';
+    }
+    return 'Unknown';
 }
 function getUserAgent() {
     return navigator === null || navigator === void 0 ? void 0 : navigator.userAgent;
@@ -117,13 +133,17 @@ function getBrowserName() {
 
 function osToNumber(os) {
     switch (os) {
-        case 'MacIntel':
+        case 'macOS':
             return 0.1;
-        case 'Windows NT':
+        case 'Windows':
             return 0.2;
-        case 'Linux x86_64':
+        case 'Linux':
             return 0.3;
-        // add more cases as needed
+        case 'iOS':
+            return 0.4; // Example: Assign a number for iOS
+        case 'Android':
+            return 0.5; // Example: Assign a number for Android
+        // Add more cases for other mobile operating systems
         default:
             return 0;
     }
@@ -140,7 +160,9 @@ function browserNameToNumber(browserName) {
             return 0.4;
         case 'Opera':
             return 0.5;
-        // add more cases as needed
+        case 'Mobile Safari':
+            return 0.6; // Example: Assign a number for Mobile Safari
+        // Add more cases for other mobile browsers
         default:
             return 0;
     }
@@ -39104,14 +39126,14 @@ var ExitIntent = /** @class */ (function (_super) {
         // mouseleave listener
         HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mouseleave', _this.mouseLeave.bind(_this));
         // start mouse move tracker
-        _this.startMouseMoveTracker();
+        _this.startTracking();
         return _this;
     }
-    ExitIntent.prototype.startMouseMoveTracker = function () {
+    ExitIntent.prototype.startTracking = function () {
         var _this = this;
         if (!this.isTracking) {
             HtmlDOM === null || HtmlDOM === void 0 ? void 0 : HtmlDOM.addEventListener('mousemove', this.MouseMoveTracker.bind(this));
-            this.Timer = setTimeout(this.stopMouseMoveTracker.bind(this), this.MaxTime * 1000);
+            this.Timer = setTimeout(this.stopTracking.bind(this), this.MaxTime * 1000);
             this.Interval = setInterval(function () {
                 _this.TimeSec++;
                 // console.log('time: ', this.TimeSec);
@@ -39119,7 +39141,7 @@ var ExitIntent = /** @class */ (function (_super) {
             this.isTracking = true;
         }
     };
-    ExitIntent.prototype.stopMouseMoveTracker = function () {
+    ExitIntent.prototype.stopTracking = function () {
         if (this.isTracking) {
             clearTimeout(this.Timer);
             clearTimeout(this.Interval);
@@ -39163,7 +39185,7 @@ var ExitIntent = /** @class */ (function (_super) {
         // console.log('Browser name:', getBrowserName());
     };
     ExitIntent.prototype.mouseLeave = function () {
-        this.stopMouseMoveTracker();
+        this.stopTracking();
     };
     return ExitIntent;
 }(WindowEvents));
